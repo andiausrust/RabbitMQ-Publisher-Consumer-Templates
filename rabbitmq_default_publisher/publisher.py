@@ -1,4 +1,6 @@
 import pika,time
+import sys
+from proto.api_proto_build import test_name
 
 message_count = 15
 count = 1
@@ -14,7 +16,7 @@ def disconnect_machine(connection):
     connection.close()
 
 while count <= message_count:
-    body_content = "Message number " + str(count)
+    body_content = test_name
     count = count + 1
     connection, channel = connect_machine()
     channel.basic_publish(exchange='',
